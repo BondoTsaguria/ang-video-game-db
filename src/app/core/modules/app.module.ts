@@ -14,9 +14,10 @@ import { MatSelectModule } from '@angular/material/select';
 
 import { AppComponent } from '../App/app.component';
 import { SearchBarComponent } from 'src/app/features/search-bar/search-bar.component';
+import { HomeComponent } from 'src/app/features/home/home.component';
 
 @NgModule({
-  declarations: [AppComponent, SearchBarComponent],
+  declarations: [AppComponent, SearchBarComponent, HomeComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
