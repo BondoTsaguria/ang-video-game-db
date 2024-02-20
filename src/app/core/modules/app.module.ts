@@ -4,7 +4,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { GaugeModule } from 'angular-gauge';
 
 import { MatTabsModule } from '@angular/material/tabs';
@@ -15,6 +15,9 @@ import { MatSelectModule } from '@angular/material/select';
 import { AppComponent } from '../App/app.component';
 import { SearchBarComponent } from 'src/app/features/search-bar/search-bar.component';
 import { HomeComponent } from 'src/app/features/home/home.component';
+
+import { HttpHeadersInterceptor } from 'src/app/shared/interceptors/http-headers.interceptor';
+import { HttpErrorsInterceptor } from 'src/app/shared/interceptors/http-errors.interceptor';
 
 @NgModule({
   declarations: [AppComponent, SearchBarComponent, HomeComponent],
@@ -30,7 +33,18 @@ import { HomeComponent } from 'src/app/features/home/home.component';
     MatFormFieldModule,
     MatSelectModule,
   ],
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: HttpHeadersInterceptor,
+      multi: true,
+    },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: HttpErrorsInterceptor,
+      multi: true,
+    },
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
