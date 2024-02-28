@@ -15,12 +15,18 @@ import { MatSelectModule } from '@angular/material/select';
 import { AppComponent } from '../App/app.component';
 import { SearchBarComponent } from 'src/app/features/search-bar/search-bar.component';
 import { HomeComponent } from 'src/app/features/home/home.component';
+import { DetailsComponent } from 'src/app/features/details/details.component';
 
 import { HttpHeadersInterceptor } from 'src/app/shared/interceptors/http-headers.interceptor';
 import { HttpErrorsInterceptor } from 'src/app/shared/interceptors/http-errors.interceptor';
 
 @NgModule({
-  declarations: [AppComponent, SearchBarComponent, HomeComponent],
+  declarations: [
+    AppComponent,
+    SearchBarComponent,
+    HomeComponent,
+    DetailsComponent,
+  ],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -28,6 +34,7 @@ import { HttpErrorsInterceptor } from 'src/app/shared/interceptors/http-errors.i
     FormsModule,
     HttpClientModule,
     GaugeModule,
+    GaugeModule.forRoot(),
     MatTabsModule,
     MatIconModule,
     MatFormFieldModule,
