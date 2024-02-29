@@ -14,6 +14,7 @@ export class HomeComponent implements OnInit, OnDestroy {
   games!: Array<Game>;
   private routeSub!: Subscription;
   private gameSub!: Subscription;
+  bang!: object;
 
   constructor(
     private httpService: HttpService,
